@@ -29,14 +29,21 @@ function playGame() {
   let a = 0;
   let b = 0;
   for (let i = 0; i < 5; i++) {
-    const computerSelection = getComputerChoice();
     const playerSelection = prompt("Rock, Paper or Scissors?");
+    const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection).startsWith("You win!")
       ? a++
       : b++;
     console.log(playRound(playerSelection, computerSelection));
   }
-  return a > b ? "You win" : "You lose";
+
+  if (a === b) {
+    return "It's a tie";
+  } else if (a > b) {
+    return "You win";
+  } else {
+    return "You lose";
+  }
 }
 
 console.log(playGame());
